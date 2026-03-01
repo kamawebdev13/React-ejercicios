@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPoo, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPoo, faPoop, faCircle } from '@fortawesome/free-solid-svg-icons';
 
 interface StatusServerProps {
     serverName: string;
@@ -12,11 +12,14 @@ const StatusServer = ({ serverName, isOnline }: StatusServerProps) => {
             
             {/* Icono del servidor */}
             <div className="relative flex items-center justify-center w-12 h-12 bg-white rounded-full border border-slate-200 text-slate-400">
-                <FontAwesomeIcon icon={faPoo} className="text-xl" />
+                <FontAwesomeIcon 
+                    icon={isOnline ? faPoo : faPoop} 
+                    className={`text-xl ${isOnline ? 'text-green-600' : 'text-red-600'}`} 
+                />
                 <span className="absolute -bottom-0.5 -right-0.5 flex items-center justify-center bg-white rounded-full p-0.5">
                     <FontAwesomeIcon
                         icon={faCircle}
-                        className={`text-[10px] ${isOnline ? 'text-green-500' : 'text-red-400'}`}
+                        className={`text-[10px] ${isOnline ? 'text-green-500 animate-pulse'  : 'text-red-400'}`}
                     />
                 </span>
             </div>
